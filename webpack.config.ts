@@ -21,7 +21,6 @@ const config: webpack.Configuration = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-        preferRelative: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
