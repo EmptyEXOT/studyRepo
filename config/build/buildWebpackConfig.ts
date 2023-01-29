@@ -3,12 +3,13 @@ import webpack from "webpack";
 import {buildLoaders} from "./buildLoaders";
 import {buildResolvers} from "./buildResolvers";
 import {buildPlugins} from "./buildPlugins";
+import {buildDevServer} from "./buildDevServer";
 
 export function buildWebpackConfig(options: IBuildOptions): webpack.Configuration {
-    const {mode, paths} = options
+    const {mode, paths, isDev} = options
 
     return {
-        mode: mode,
+        mode,
         entry: paths.entry,
         output: {
             filename: "[name].[contenthash].js",
@@ -20,5 +21,7 @@ export function buildWebpackConfig(options: IBuildOptions): webpack.Configuratio
         },
         resolve: buildResolvers(),
         plugins: buildPlugins(options),
+        devtool: isDev ? 'inline-source-map' : undefined,
+        devServer: isDev? buildDevServer(options) : undefined,
     }
 }
