@@ -8,4 +8,10 @@ export interface IBuildOptions {
     mode: BuildMode;
     paths: IBuildPaths;
     isDev: boolean;
+    port: number
+}
+
+export interface IBuildMode {
+    mode: BuildMode,
+    port: number
 }
