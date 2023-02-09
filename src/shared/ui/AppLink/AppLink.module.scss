@@ -1,0 +1,13 @@
+.appLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.primary {
+  color: var(--primary-color-inverted)
+}
+
+.secondary {
+  color: var(--secondary-color-inverted);
+}
