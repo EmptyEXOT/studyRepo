@@ -3,6 +3,27 @@ import {IBuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 export function buildLoaders({isDev}: IBuildOptions): Array<webpack.RuleSetRule> {
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
+    }
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: [
+            {
+                loader: '@svgr/webpack',
+                options: {
+                    native: false,
+                },
+            },
+        ],
+    }
+
     const styleLoaders = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -29,6 +50,8 @@ export function buildLoaders({isDev}: IBuildOptions): Array<webpack.RuleSetRule>
     }
 
     return [
+        fileLoader,
+        svgLoader,
         typescriptLoader,
         styleLoaders,
     ]
