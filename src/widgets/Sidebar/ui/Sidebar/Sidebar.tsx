@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import classes from './Sidebar.module.scss';
 
 interface SidebarProps {
-    className?: string
+    className?: string;
 }
 
 const Sidebar: FC<SidebarProps> = (props) => {
@@ -20,16 +20,15 @@ const Sidebar: FC<SidebarProps> = (props) => {
     };
 
     return (
-        <div className={classNames(
-            classes.sidebar,
-            { [classes.collapsed]: collapsed },
-            [className],
-        )}
+        <div
+            className={classNames(
+                classes.sidebar,
+                { [classes.collapsed]: collapsed },
+                [className],
+            )}
         >
             <Button onClick={collapse}>
-                {collapsed
-                    ? t('расскрыть')
-                    : t('скрыть')}
+                {collapsed ? t('расскрыть') : t('скрыть')}
             </Button>
             <div className={classes.switchers}>
                 <ThemeSwitcher />

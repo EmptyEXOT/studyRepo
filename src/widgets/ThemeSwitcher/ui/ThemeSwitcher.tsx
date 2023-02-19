@@ -7,7 +7,7 @@ import ThemeSwitcherIcon from 'shared/assets/themeSwither.svg';
 import classes from './ThemeSwitcher.module.scss';
 
 interface ThemeSwitcherProps {
-    className?: string
+    className?: string;
 }
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
@@ -18,9 +18,14 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
         <Button
             theme={ButtonTheme.CLEAR}
             onClick={toggleTheme}
-            className={classNames(classes.themeSwitcher, {}, [className, classes[theme]])}
+            className={classNames(classes.themeSwitcher, {}, [
+                className,
+                classes[theme],
+            ])}
         >
-            <ThemeSwitcherIcon className={classNames(classes.themeSwitcherIcon, {}, [])} />
+            <ThemeSwitcherIcon
+                className={classNames(classes.themeSwitcherIcon, {}, [])}
+            />
         </Button>
     );
 };
