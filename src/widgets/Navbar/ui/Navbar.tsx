@@ -6,17 +6,29 @@ import { useTranslation } from 'react-i18next';
 import classes from './Navbar.module.scss';
 
 interface NavbarProps {
-    className?: string
+    className?: string;
 }
 
-const Navbar:FC<NavbarProps> = ({ className }) => {
+const Navbar: FC<NavbarProps> = ({ className }) => {
     const { t } = useTranslation();
 
     return (
         <div className={classNames(classes.navbar, {}, [className])}>
             <div className={classes.links}>
-                <AppLink theme={AppLinkTheme.PRIMARY} className={classes.link} to="/">{t('Главная')}</AppLink>
-                <AppLink theme={AppLinkTheme.PRIMARY} className={classes.link} to="/about">{t('О сайте')}</AppLink>
+                <AppLink
+                    theme={AppLinkTheme.PRIMARY}
+                    className={classes.link}
+                    to='/'
+                >
+                    {t('Главная')}
+                </AppLink>
+                <AppLink
+                    theme={AppLinkTheme.PRIMARY}
+                    className={classes.link}
+                    to='/about'
+                >
+                    {t('О сайте')}
+                </AppLink>
             </div>
         </div>
     );
