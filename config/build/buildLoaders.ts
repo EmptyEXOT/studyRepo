@@ -2,7 +2,9 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { IBuildOptions } from './types/config';
 
-export function buildLoaders({ isDev }: IBuildOptions): Array<webpack.RuleSetRule> {
+export function buildLoaders({
+    isDev,
+}: IBuildOptions): Array<webpack.RuleSetRule> {
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff|woff2)$/i,
         use: [
@@ -10,6 +12,27 @@ export function buildLoaders({ isDev }: IBuildOptions): Array<webpack.RuleSetRul
                 loader: 'file-loader',
             },
         ],
+    };
+
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+                plugins: [
+                    [
+                        'i18next-extract',
+                        {
+                            nsSeparator: '~',
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true,
+                        },
+                    ],
+                ],
+            },
+        },
     };
 
     const svgLoader = {
@@ -49,10 +72,5 @@ export function buildLoaders({ isDev }: IBuildOptions): Array<webpack.RuleSetRul
         exclude: /node_modules/,
     };
 
-    return [
-        fileLoader,
-        svgLoader,
-        typescriptLoader,
-        styleLoaders,
-    ];
+    return [fileLoader, svgLoader, babelLoader, typescriptLoader, styleLoaders];
 }
