@@ -21,13 +21,14 @@ const Sidebar: FC<SidebarProps> = (props) => {
 
     return (
         <div
+            data-testid='sidebar'
             className={classNames(
                 classes.sidebar,
                 { [classes.collapsed]: collapsed },
                 [className],
             )}
         >
-            <Button onClick={collapse}>
+            <Button data-testid='sidebarToggle' onClick={collapse}>
                 {collapsed ? t('расскрыть') : t('скрыть')}
             </Button>
             <div className={classes.switchers}>
