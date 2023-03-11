@@ -10,8 +10,10 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:storybook/recommended',
     ],
     parser: '@typescript-eslint/parser',
+    plugins: ['react', '@typescript-eslint', 'i18next'],
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
@@ -19,7 +21,6 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next'],
     rules: {
         'object-curly-newline': 'off',
         'jsx-quotes': ['error', 'prefer-single'],
@@ -28,7 +29,9 @@ module.exports = {
         indent: [2, 4],
         'react/jsx-filename-extension': [
             2,
-            { extensions: ['.js', '.jsx', '.tsx'] },
+            {
+                extensions: ['.js', '.jsx', '.tsx'],
+            },
         ],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
@@ -43,9 +46,18 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'i18next/no-literal-string': [
             'error',
-            { markupOnly: true, ignoreAttribute: ['data-testid'] },
+            {
+                markupOnly: true,
+                ignoreAttribute: ['data-testid', 'to'],
+            },
         ],
-        'max-len': ['error', { ignoreComments: true, code: 100 }],
+        'max-len': [
+            'error',
+            {
+                ignoreComments: true,
+                code: 100,
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,

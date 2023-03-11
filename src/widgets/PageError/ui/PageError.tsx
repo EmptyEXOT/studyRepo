@@ -19,7 +19,9 @@ const PageError: FC<PageErrorProps> = (props) => {
     return (
         <div className={classNames(classes.pageError, {}, [className])}>
             <p>{t('Произошла ошибка')}</p>
-            <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
+            <Button theme={ButtonTheme.OUTLINE} onClick={reloadPage}>
+                {t('Обновить страницу')}
+            </Button>
         </div>
     );
 };
