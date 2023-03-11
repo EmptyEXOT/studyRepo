@@ -25,7 +25,6 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
                 <AppLink
                     theme={AppLinkTheme.PRIMARY}
                     className={classes.link}
-                    // eslint-disable-next-line i18next/no-literal-string
                     to='/about'
                 >
                     {t('О сайте')}
