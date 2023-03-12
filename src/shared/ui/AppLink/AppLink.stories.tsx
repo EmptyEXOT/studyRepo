@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/decorators/themeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/lib/ThemeContext';
-import AppLink, { AppLinkTheme } from './AppLink';
+import AppLink, { AppLinkVariant } from './AppLink';
 
 export default {
     title: 'shared/AppLink',
@@ -23,22 +23,22 @@ const Template: ComponentStory<typeof AppLink> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-    theme: AppLinkTheme.PRIMARY,
+    theme: AppLinkVariant.PRIMARY,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    theme: AppLinkTheme.SECONDARY,
+    theme: AppLinkVariant.SECONDARY,
 };
 
 export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
-    theme: AppLinkTheme.PRIMARY,
+    theme: AppLinkVariant.PRIMARY,
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const SecondaryDark = Template.bind({});
 SecondaryDark.args = {
-    theme: AppLinkTheme.SECONDARY,
+    theme: AppLinkVariant.SECONDARY,
 };
 SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
