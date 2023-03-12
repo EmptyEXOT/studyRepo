@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import AppLink, { AppLinkVariant } from 'shared/ui/AppLink/AppLink';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 import classes from './Navbar.module.scss';
@@ -14,22 +14,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 
     return (
         <div className={classNames(classes.navbar, {}, [className])}>
-            <div className={classes.links}>
-                <AppLink
-                    theme={AppLinkTheme.PRIMARY}
-                    className={classes.link}
-                    to='/'
-                >
-                    {t('Главная')}
-                </AppLink>
-                <AppLink
-                    theme={AppLinkTheme.PRIMARY}
-                    className={classes.link}
-                    to='/about'
-                >
-                    {t('О сайте')}
-                </AppLink>
-            </div>
+            <div className={classes.links} />
         </div>
     );
 };
