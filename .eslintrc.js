@@ -13,7 +13,7 @@ module.exports = {
         'plugin:storybook/recommended',
     ],
     parser: '@typescript-eslint/parser',
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
@@ -44,6 +44,11 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
+        'sx-a11y/no-static-element-interactions': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
         'i18next/no-literal-string': [
             'error',
             {
