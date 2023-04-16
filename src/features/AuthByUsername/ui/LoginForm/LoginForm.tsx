@@ -15,14 +15,14 @@ const LoginForm: FC<LoginFormProps> = (props) => {
     return (
         <div className={classNames(classes.loginForm, {}, [className])}>
             <Input
-                label='Username'
+                label={t('Username')}
                 variant={InputVariant.OUTLINED}
                 className={classes.input}
                 type='text'
                 autofocus
             />
             <Input
-                label='Password'
+                label={t('Password')}
                 variant={InputVariant.OUTLINED}
                 className={classes.input}
                 type='text'

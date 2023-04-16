@@ -16,7 +16,7 @@ const MainPage = () => {
             <BugButton />
             <Input
                 variant={InputVariant.CLEAR}
-                label='enter text'
+                label={t('enter text')}
                 value={value}
                 onChange={onChange}
             />
