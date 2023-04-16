@@ -1,0 +1,34 @@
+.input {
+  text-shadow: 0 0 0 var(--primary-color);
+  outline: none;
+  width: 100%;
+  flex-grow: 10;
+  color: var(--primary-color);
+  padding: 5px;
+}
+
+.label {
+  margin-right: 5px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.clear {
+  border: none;
+  background: transparent;
+}
+
+.outlined {
+  border: 1px solid var(--bg-color-inverted);
+}
+
+.light {
+  background: white;
+}
+
+.transparent {
+  background: transparent;
+}
