@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import Button, { ButtonVariant } from 'shared/ui/Button/Button';
+import Input, { InputColor, InputVariant } from 'shared/ui/Input/Input';
 import classes from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -13,8 +14,19 @@ const LoginForm: FC<LoginFormProps> = (props) => {
     const { className, children } = props;
     return (
         <div className={classNames(classes.loginForm, {}, [className])}>
-            <input className={classes.input} type='text' />
-            <input className={classes.input} type='text' />
+            <Input
+                label='Username'
+                variant={InputVariant.OUTLINED}
+                className={classes.input}
+                type='text'
+                autofocus
+            />
+            <Input
+                label='Password'
+                variant={InputVariant.OUTLINED}
+                className={classes.input}
+                type='text'
+            />
             <Button
                 className={classes.loginBtn}
                 variant={ButtonVariant.OUTLINE}
