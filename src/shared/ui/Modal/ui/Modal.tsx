@@ -18,23 +18,40 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean;
 }
 
-const CLOSE_TIMEOUT: number = 300;
+const OPEN_CLOSE_TIMEOUT: number = 300;
 
 const Modal: FC<ModalProps> = (props) => {
     const { t } = useTranslation();
-    const { className, children, isOpen, onClose } = props;
+    const { className, children, isOpen, onClose, lazy } = props;
     const [isClosing, setIsClosing] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const [isMounted, setIsMounted] = useState(false);
+    const [isOpening, setIsOpening] = useState(false);
+    const closeTimerRef = useRef<ReturnType<typeof setTimeout>>();
+    const openTimerRef = useRef<ReturnType<typeof setTimeout>>();
     const { theme } = useTheme();
+
+    useEffect(() => {
+        if (isOpen) {
+            setIsOpening(true);
+            setIsMounted(true);
+            openTimerRef.current = setTimeout(() => {
+                setIsOpening(false);
+            }, OPEN_CLOSE_TIMEOUT);
+        }
+        return () => {
+            setIsMounted(false);
+        };
+    }, [isOpen]);
 
     const closeHandler = useCallback(() => {
         setIsClosing(true);
-        timerRef.current = setTimeout(() => {
+        closeTimerRef.current = setTimeout(() => {
             onClose?.();
             setIsClosing(false);
-        }, CLOSE_TIMEOUT);
+        }, OPEN_CLOSE_TIMEOUT);
     }, [onClose]);
 
     const onKeyDown = useCallback(
@@ -56,7 +73,8 @@ const Modal: FC<ModalProps> = (props) => {
         }
 
         return () => {
-            clearTimeout(timerRef.current);
+            clearTimeout(openTimerRef.current);
+            clearTimeout(closeTimerRef.current);
             window.removeEventListener('keydown', onKeyDown);
         };
     }, [isOpen, onKeyDown]);
@@ -64,7 +82,13 @@ const Modal: FC<ModalProps> = (props) => {
     const mods: Record<string, boolean> = {
         [classes.opened]: isOpen,
         [classes.isClosing]: isClosing,
+        [classes.isOpening]: isOpening,
     };
+
+    if (lazy && !isMounted) {
+        console.log('not');
+        return null;
+    }
 
     return (
         <Portal>
