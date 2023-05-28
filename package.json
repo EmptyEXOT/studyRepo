@@ -21,7 +21,8 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook/",
     "storybook:build": "build-storybook -c ./config/storybook/",
     "json-server": "json-server --watch ./json-server/db.json --port 8000",
-    "start:dev:server": "node ./json-server/index.js"
+    "start:dev:server": "node ./json-server/index.js",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -84,7 +85,8 @@
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
