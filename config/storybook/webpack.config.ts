@@ -23,6 +23,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.module.rules.push(buildSvgLoader());
     config.module.rules.push(buildStyleLoader(true));
     config.resolve.modules.push(paths.src);
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            __IS_DEV__: true,
+        }),
+    );
     config.resolve.extensions.push('.ts', '.tsx');
     return config;
 };
